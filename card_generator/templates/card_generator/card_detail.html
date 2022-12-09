@@ -1,0 +1,39 @@
+{% extends 'card_generator/base.html' %}
+{% load static %}
+{% block title %}Информация о карте{% endblock %}
+
+{% block header %}
+    {% include 'block/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <nav aria-label="breadcrumb" class="mt-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                </ol>
+            </nav>
+            <img class="img-fluid rounded " src="{{ post.image.url }}" alt="">
+            <hr>
+            <p class="lead">
+            <p>Серия карты: {{ card.card_series }}</p>
+            <p>Номер карты: {{ card.number_card }}</p>
+            <p>Дата выпуска карты: {{ card.card_issue_date }}</p>
+            <p>Дата окончания активности карты: {{ card.end_date_of_card_activity }}</p>
+            <p>Сумма на карте в руб.: {{ card.amount_on_the_card }}</p>
+            <p>Статус карты: {{ card.card_status }}</p>
+            <br>
+            <p>Дата и время покупок по карте:</p>
+            {% for us in usage %}
+                <p>{{ us.card_use_date }}</p>
+            {% endfor %}
+            </p>
+            <div class="d-flex justify-content-end"></div>
+            <hr>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
