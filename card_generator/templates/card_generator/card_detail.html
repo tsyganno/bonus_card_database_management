@@ -22,13 +22,17 @@
             <p>Номер карты: {{ card.number_card }}</p>
             <p>Дата выпуска карты: {{ card.card_issue_date }}</p>
             <p>Дата окончания активности карты: {{ card.end_date_of_card_activity }}</p>
-            <p>Сумма на карте в руб.: {{ card.amount_on_the_card }}</p>
+            <p>Сумма на карте: {{ card.amount_on_the_card|floatformat:2 }} руб.</p>
             <p>Статус карты: {{ card.card_status }}</p>
             <br>
             <p>Дата и время покупок по карте:</p>
-            {% for us in usage %}
-                <p>{{ us.card_use_date }}</p>
-            {% endfor %}
+            {% if usage %}
+                {% for us in usage %}
+                    <p>{{ us.card_use_date }}</p>
+                {% endfor %}
+            {% else %}
+                <p>еще не было покупок...</p>
+            {% endif %}
             </p>
             <div class="d-flex justify-content-end"></div>
             <hr>

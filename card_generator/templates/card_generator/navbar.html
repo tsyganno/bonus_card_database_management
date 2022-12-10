@@ -14,13 +14,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a href="#" class="nav-link">Главная</a>
-      </li>
-      <li class="nav-item ">
-        <a href="#" class="nav-link">Контакты</a>
+        <a href="{% url 'index' %}" class="nav-link">Главная</a>
       </li>
     </ul>
-    <form action="#" method="get" class="form-inline my-2 my-lg-0">
+    <form action="{% url 'search_results' %}" method="get" class="form-inline my-2 my-lg-0">
           <input name="q" type="text" class="form-control mr-sm-2" placeholder="Поиск" aria-label="Поиск">
           <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Поиск</button>
     </form>

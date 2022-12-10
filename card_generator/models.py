@@ -6,12 +6,11 @@ class CardGenerator(models.Model):
     number_card = models.IntegerField(verbose_name='Номер карты')
     card_issue_date = models.DateTimeField(db_index=True, verbose_name='Дата выпуска карты')
     end_date_of_card_activity = models.DateTimeField(db_index=True, verbose_name='Дата окончания активности карты')
-
     amount_on_the_card = models.FloatField(verbose_name='Сумма на карте в руб.')
     TYPE = (
-        ('not_activated', 'Не активирована'),
-        ('activated', 'Активирована'),
-        ('overdue', 'Просрочена'),
+        ('Не активирована', 'Не активирована'),
+        ('Активирована', 'Активирована'),
+        ('Просрочена', 'Просрочена'),
     )
     card_status = models.CharField(max_length=50, choices=TYPE, verbose_name='Статус карты')
 

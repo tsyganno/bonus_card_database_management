@@ -20,12 +20,9 @@
                 <p>Дата выпуска карты: {{ card.card_issue_date }}</p>
                 <p>Дата окончания действия карты: {{ card.end_date_of_card_activity }}</p>
                 <p>Статус карты: {{ card.card_status }}</p>
-<!--                {% for tag in post.tag.all %}-->
-<!--                    <a href="#" class="mr-1 badge badge-info">#{{ tag }}</a>-->
-<!--                {% endfor %}-->
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <a href="{% url 'card_detail' card.card_series %}" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                    <a href="{% url 'card_detail' card.pk %}" class="btn btn-sm btn-outline-secondary">Подробнее</a>
                   </div>
                 </div>
               </div>
