@@ -11,9 +11,6 @@
     <div class="row">
         <div class="col-lg-8">
             <nav aria-label="breadcrumb" class="mt-4">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-                </ol>
             </nav>
             <img class="img-fluid rounded " src="{{ post.image.url }}" alt="">
             <hr>
@@ -36,7 +33,14 @@
             </p>
             <div class="d-flex justify-content-end"></div>
             <hr>
-        </div>
+                {% load crispy_forms_tags %}
+                <p>{% crispy form %}</p>
+
+                <form method="post" action="{% url 'delete_card' card.pk %}">
+                {% csrf_token %}
+                <br>
+                <input type="submit" class="btn btn-info mb-2" value="Удалить карту">
+                </form>
     </div>
 </div>
 </div>
