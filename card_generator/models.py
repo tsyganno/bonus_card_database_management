@@ -2,6 +2,8 @@ from collections import OrderedDict
 
 from django.db import models
 
+from conf.settings import DATETIME_FORMAT
+
 
 class CardGenerator(models.Model):
     NOT_ACTIVE = 'Не активирована'
@@ -17,7 +19,6 @@ class CardGenerator(models.Model):
         (ACTIVE, 'Активирована'),
     ))
     card_status = models.CharField(max_length=50, choices=TYPE_DICT.items(), verbose_name='Статус карты')
-    overdue = models.BooleanField(default=False)
 
     def __str__(self):
         return self.card_series
