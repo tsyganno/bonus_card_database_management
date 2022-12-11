@@ -9,7 +9,6 @@ class CardForm(forms.ModelForm):
 
     class Meta:
         model = CardGenerator
-
         fields = ('card_status',)
 
     def __init__(self, *args, **kwargs):

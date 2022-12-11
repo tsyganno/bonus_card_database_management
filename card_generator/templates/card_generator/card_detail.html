@@ -20,7 +20,9 @@
             <p>Дата выпуска карты: {{ card.card_issue_date }}</p>
             <p>Дата окончания активности карты: {{ card.end_date_of_card_activity }}</p>
             <p>Сумма на карте: {{ card.amount_on_the_card|floatformat:2 }} руб.</p>
+
             <p>Статус карты: {{ card.card_status }}</p>
+
             <br>
             <p>Дата и время покупок по карте:</p>
             {% if usage %}
@@ -33,8 +35,12 @@
             </p>
             <div class="d-flex justify-content-end"></div>
             <hr>
-                {% load crispy_forms_tags %}
-                <p>{% crispy form %}</p>
+                {% if form %}
+                    {% load crispy_forms_tags %}
+                    <p>{% crispy form %}</p>
+                {% else %}
+                    <p>Карта {{ overdue }}</p>
+                {% endif %}
 
                 <form method="post" action="{% url 'delete_card' card.pk %}">
                 {% csrf_token %}
