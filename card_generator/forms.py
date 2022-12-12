@@ -29,7 +29,14 @@ class CreateCardForm(forms.ModelForm):
 
     class Meta:
         model = CardGenerator
-        fields = ('card_series', 'number_card', 'card_issue_date', 'end_date_of_card_activity', 'amount_on_the_card', 'card_status',)
+        fields = (
+            'card_series',
+            'number_card',
+            'card_issue_date',
+            'end_date_of_card_activity',
+            'amount_on_the_card',
+            'card_status',
+        )
 
     def __init__(self, *args, **kwargs):
         super(CreateCardForm, self).__init__(*args, **kwargs)
