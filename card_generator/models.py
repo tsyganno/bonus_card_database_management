@@ -2,8 +2,6 @@ from collections import OrderedDict
 
 from django.db import models
 
-from conf.settings import DATETIME_FORMAT
-
 
 class CardGenerator(models.Model):
     NOT_ACTIVE = 'Не активирована'

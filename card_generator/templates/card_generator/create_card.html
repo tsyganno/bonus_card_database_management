@@ -1,0 +1,26 @@
+{% extends 'card_generator/base.html' %}
+{% load static %}
+{% block title %}Информация о карте{% endblock %}
+
+{% block header %}
+    {% include 'block/header.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <nav aria-label="breadcrumb" class="mt-4">
+            </nav>
+            <img class="img-fluid rounded " src="{{ post.image.url }}" alt="">
+            <p class="lead">
+            </p>
+            <div class="d-flex justify-content-end"></div>
+
+                    {% load crispy_forms_tags %}
+                    <p>{% crispy form %}</p>
+
+    </div>
+</div>
+</div>
+{% endblock %}

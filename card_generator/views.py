@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-# import locale
 
 from django.shortcuts import render, reverse
 from django.views import View
@@ -7,12 +6,13 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from django.views.generic import UpdateView, DeleteView
+from django.views.generic.edit import CreateView
 from django.utils import timezone
 
 from card_generator.models import CardGenerator, Usage
-from card_generator.forms import CardForm
+from card_generator.forms import CardForm, CreateCardForm
 
-# locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
+
 months = {'янв': '01', 'фев': '02', 'март': '03', 'апр': '04', 'ма': '05', 'июн': '06', 'июл': '07', 'авг': '08', 'сент': '09', 'окт': '10', 'нояб': '11', 'дек': '12'}
 
 
@@ -101,6 +101,15 @@ class SearchResultsView(View):
             'results': page_obj,
             'count': paginator.count
         })
+
+
+class CardCreateView(CreateView):
+    template_name = 'card_generator/create_card.html'
+    model = CardGenerator
+    form_class = CreateCardForm
+
+    def get_success_url(self):
+        return reverse('index')
 
 
 class CardDeleteView(DeleteView):

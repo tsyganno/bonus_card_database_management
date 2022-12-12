@@ -23,3 +23,28 @@ class CardForm(forms.ModelForm):
             ),
             ButtonHolder(Submit('submit', 'Изменить статус'))
         )
+
+
+class CreateCardForm(forms.ModelForm):
+
+    class Meta:
+        model = CardGenerator
+        fields = ('card_series', 'number_card', 'card_issue_date', 'end_date_of_card_activity', 'amount_on_the_card', 'card_status',)
+
+    def __init__(self, *args, **kwargs):
+        super(CreateCardForm, self).__init__(*args, **kwargs)
+
+        self.helper = FormHelper()
+        self.helper.form_method = 'POST'
+        self.helper.layout = Layout(
+            Fieldset(
+                '',
+                'card_series',
+                'number_card',
+                'card_issue_date',
+                'end_date_of_card_activity',
+                'amount_on_the_card',
+                'card_status',
+            ),
+            ButtonHolder(Submit('submit', 'Создать карту'))
+        )
