@@ -8,7 +8,7 @@ class CardGenerator(models.Model):
     ACTIVE = 'Активирована'
 
     card_series = models.CharField(max_length=50, verbose_name='Серия карты')
-    number_card = models.IntegerField(verbose_name='Номер карты')
+    number_card = models.CharField(max_length=50, verbose_name='Номер карты')
     card_issue_date = models.DateTimeField(db_index=True, verbose_name='Дата выпуска карты')
     end_date_of_card_activity = models.DateTimeField(db_index=True, verbose_name='Дата окончания активности карты')
     amount_on_the_card = models.FloatField(verbose_name='Сумма на карте в руб.')
