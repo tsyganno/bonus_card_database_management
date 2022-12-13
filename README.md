@@ -35,3 +35,14 @@ docker-compose -f docker-compose.yml up --build
 ```shell
 http://localhost:8000/
 ```
+
+3. Заполнение БД данными карт:
+
+a) Создаем суперпользователя и заполняем данные по картам в админке:
+
+```shell
+docker exec -ti service python manage.py createsuperuser
+```
+b) Заполняем данные карт в клиентской части.
+
+4. Используем, тестируем приложение).
