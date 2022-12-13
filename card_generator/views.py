@@ -10,7 +10,7 @@ from django.views.generic.edit import CreateView
 from django.utils import timezone
 
 from card_generator.models import CardGenerator, Usage
-from card_generator.forms import CardForm, CreateCardForm
+from card_generator.forms import CardForm, CreateCardForm, UsageForm
 
 
 months = {
@@ -78,7 +78,7 @@ class CardDetailView(UpdateView):
             'activity_end_date': activity_end_date,
             'card': card,
             'usage': usage,
-            'form': CardForm()
+            'form': CardForm(),
         })
 
 
@@ -123,6 +123,22 @@ class CardCreateView(CreateView):
 
     def get_success_url(self):
         return reverse('index')
+
+
+class PurchaseCreateView(CreateView):
+    template_name = 'card_generator/add_purchase.html'
+    model = Usage
+    form_class = UsageForm
+
+    def form_valid(self, form):
+        form.instance.card_generator = CardGenerator.objects.get(id=self.kwargs['pk'])
+        return super(PurchaseCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        card = get_object_or_404(CardGenerator, id=self.kwargs['pk'])
+        return reverse('card_detail', kwargs={
+            "pk": card.pk
+        })
 
 
 class CardDeleteView(DeleteView):

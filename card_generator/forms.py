@@ -2,7 +2,7 @@ from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 
-from card_generator.models import CardGenerator
+from card_generator.models import CardGenerator, Usage
 
 
 class CardForm(forms.ModelForm):
@@ -54,4 +54,24 @@ class CreateCardForm(forms.ModelForm):
                 'card_status',
             ),
             ButtonHolder(Submit('submit', 'Создать карту'))
+        )
+
+
+class UsageForm(forms.ModelForm):
+
+    class Meta:
+        model = Usage
+        fields = ('card_use_date',)
+
+    def __init__(self, *args, **kwargs):
+        super(UsageForm, self).__init__(*args, **kwargs)
+
+        self.helper = FormHelper()
+        self.helper.form_method = 'POST'
+        self.helper.layout = Layout(
+            Fieldset(
+                '',
+                'card_use_date',
+            ),
+            ButtonHolder(Submit('submit', 'Добавить дату покупки'))
         )

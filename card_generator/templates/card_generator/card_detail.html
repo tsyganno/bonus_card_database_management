@@ -31,10 +31,12 @@
             {% else %}
                 <p>еще не было покупок...</p>
             {% endif %}
-            </p>
             <div class="d-flex justify-content-end"></div>
             <hr>
                 {% if form %}
+                    {% if card.card_status == 'Активирована' %}
+                        <a href="{% url 'add_purchase' card.pk %}"><input type="submit" class="btn btn-info mb-2" value="Добавить покупки"></a>
+                    {% endif %}
                     {% load crispy_forms_tags %}
                     <p>{% crispy form %}</p>
                 {% else %}
